@@ -1,0 +1,6 @@
+__pycache__
+backup*
+*.txt
+*.db
+*.csv
+demo.html

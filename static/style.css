@@ -1,0 +1,192 @@
+@media (max-width: 700px) {
+  body {
+    width: 520px;
+  }
+}
+
+@font-face {
+  font-family: "Computer Modern";
+  src: url('fonts/cmunss.otf');
+}
+@font-face {
+  font-family: "Computer Modern";
+  src: url('fonts/cmunsx.otf');
+  font-weight: bold;
+}
+body {
+  font-family: "Computer Modern", sans-serif;
+}
+h1 {
+  font-size: 1.6em;
+  font-weight: bold;
+  text-align: center;
+}
+h2 {
+  font-size: 1.4em;
+  text-align: center;
+  font-weight: normal;
+}
+h2 span {
+  text-decoration: underline;
+}
+h2::before {
+  content: "Your Name: ";
+}
+h3 {
+  font-size: 1.2em;
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+div.namebox {
+  display: inline-block;
+  height: 5em;
+  width: 240px;
+  border: 1px black solid;
+  text-align: center;
+  vertical-align: middle;
+  margin: 5px 2px;
+  position: relative;
+}
+div.namebox div.image {
+  height: 15px;
+  width: 15px;
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  background-size: contain;
+}
+div.empty::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+div.ready {
+  cursor: pointer;
+}
+span.name {
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 1.2em;
+}
+div.filled {
+  background-color: #f0f0f0;
+}
+div.filled span.address {
+  line-height: 1.3em;
+}
+div.filled span.name {
+  line-height: 1.6em;
+  font-weight: bold;
+}
+span.address::before {
+  content: ' ';
+  display: block;
+}
+span.address {
+  color: black;
+  font-size: 0.9em;
+}
+.tenor {
+  color: #428BCA;
+}
+.tenor div.empty:hover {
+  background-color: #428BCA;
+  color: white;
+}
+.tenor div.filled {
+  background-color: #cfdbe6;
+}
+.tenor div.image {
+  background-image: url('check_tenor.png');
+}
+.lead {
+  color: #5CB85C;
+}
+.lead div.empty:hover {
+  background-color: #5CB85C;
+  color: black;
+}
+.lead div.filled {
+  background-color: #cfe6cf;
+}
+.lead div.image {
+  background-image: url('check_lead.png');
+}
+.baritone {
+  color: #e18f00;
+}
+.baritone div.empty:hover {
+  background-color: #e18f00;
+  color: black;
+}
+.baritone div.filled {
+  background-color: #ffdfb0;
+}
+.baritone div.image {
+  background-image: url('check_baritone.png');
+}
+.bass {
+  color: #D9534F;
+}
+.bass div.empty:hover {
+  background-color: #D9534F;
+  color: black;
+}
+.bass div.filled {
+  background-color: #f4dcdc;
+}
+.bass div.image {
+  background-image: url('check_bass.png');
+}
+div.empty:hover div.image {
+  background-image: url('check_black.png');
+}
+div#infos {
+  height: 3em;
+}
+div.infobox {
+  text-align: center;
+  transition: opacity 3s;
+  transition-timing-function: cubic-bezier(1,1,1.0,0);
+  -webkit-transition-timing-function: cubic-bezier(1,1,1.0,0);
+}
+div.cover {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+div.cover.hidden {
+  display: none;
+}
+div.popup {
+  background-color: white;
+  padding: 40px;
+  border-radius: 5px;
+}
+div.popup button {
+  width: 200px;
+  height: 60px;
+  font-size: 1.3em;
+  margin: 0 20px;
+  margin-top: 40px;
+  box-shadow: none;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.confirm {
+  background-color: #1b3bc7;
+  color: white;
+}
+button.deny {
+  background-color: #d2d2d2; 
+}
