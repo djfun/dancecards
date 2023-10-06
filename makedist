@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+
+# A simple-minded setup script for packaging the dancecards tools, sans user
+# (most) data.  Assumes a Debian or Ubuntu environment; if yours is different
+# you can use this as a guide.
+
+timestamp=$(date +%Y%m%d_%H%M%S)
+
+echo "Creating ../dancecards-dist-${timestamp}.tgz..."
+tar -czf ../dancecards-dist-${timestamp}.tgz \
+    --no-recursion \
+    --exclude-backups \
+    --exclude="*~" \
+    --exclude="*.tgz" \
+    --exclude="*.log" \
+    --exclude="*.db" \
+    --exclude="*nohup*" \
+    --exclude="*/venv/*" \
+    --exclude="venv/*" \
+    --exclude="venv" \
+    --exclude="__pycache__/" \
+    --exclude="__pycache__" \
+    --exclude="dancecards.csv" \
+    --exclude="dancecards.db" \
+    * \
+    ./static/*.png \
+    ./static/*.css \
+    ./static/*.js \
+    ./static/*.html \
+    ./static/fonts/* \
+    ./static/socket.io/* \
+    ./static/pix/no_picture.jpg
+

@@ -1,0 +1,48 @@
+#!/usr/bin/bash
+
+# A simple-minded setup script for the dancecard system. It doesn't load any
+# data, just does what should be one-time tasks. Assumes a Debian or Ubuntu
+# environment; if yours is different you can use this as a guide.
+
+if [ -d "./venv" ]; then
+    echo "Your python3 virtual environment already exists. Exiting to not clobber your work."
+    exit 1
+fi
+
+declare -a isarray=('libjpeg-dev' 'python3' 'sqlite3')
+declare -a installed=()
+declare -a not_installed=()
+
+echo "Testing for system dependencies..."
+for i in "${isarray[@]}" ; do
+    if /usr/bin/apt list  2>/dev/null | grep -q "^${i}/" ;then 
+        installed+=(${i})
+    else
+        not_installed+=(${i})
+    fi 
+done 
+
+for ni in "${not_installed[@]}" ; do
+    echo "One or more required packages NOT installed: ${not_installed[@]}"
+    echo "Install the missing one(s) and try again."
+    exit 1
+done
+
+echo "Setting up a virtual environment..."
+
+python3 -mvenv venv # Create the virtual environment we'll be running in.
+. ./venv/bin/activate # And enable it
+
+# Install the packages we use:
+echo "Installing python packages we need..."
+pip install wheel
+pip install Image
+pip install Pillow
+pip install qrcode
+pip install eventlet
+pip install python-socketio
+pip install Flask
+pip install flask-socketio
+pip install gevent-websocket
+
+echo "... your environment should be ready."

@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve dancecards
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/ahb2023/dancecards
+Environment="PATH=/home/ubuntu/ahb2023/dancecards/venv/bin"
+ExecStart=/home/ubuntu/ahb2023/dancecards/venv/bin/uwsgi --ini dancecards.ini
+
+[Install]
+WantedBy=multi-user.target

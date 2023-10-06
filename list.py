@@ -8,11 +8,14 @@ import time
 
 DATABASE = './dancecards.db'
 
+#tld = 'xqhb.ddns.net/ukhb2023'
+tld = 'xqhb.ddns.net'
+
 db = sqlite3.connect(DATABASE)
 cur = db.cursor()
 
 
-cur.execute("SELECT name, email, voicepart, code \
+cur.execute("SELECT name, email, voicepart, code, partnum \
 from singers order by id")
 
 singers = cur.fetchall()
@@ -26,5 +29,7 @@ for singer in singers:
   s_email = singer[1]
   s_voicepart = singer[2]
   s_code = singer[3]
+  s_partnum = singer[4]
 
-  print(f'''{s_name:<30} {s_email:<40} {s_voicepart:<20} https://dancecards.europeanharmonybrigade.org/card/{s_code}''')
+# dancecards.europeanharmonybrigade.org
+  print(f'''{s_name:<30} ({s_partnum:<2}) {s_email:<40} {s_voicepart:<20} https://{tld}/card/{s_code}''')

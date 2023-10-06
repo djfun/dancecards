@@ -1,0 +1,8 @@
+#
+# Backup the non-database elements.
+
+timestamp=$(date +%Y%m%d_%H%M%S)
+
+echo "Creating ../dancecards-${timestamp}.tgz..."
+tar -czf ../dancecards-${timestamp}.tgz --exclude="*~" --exclude="*.log" --exclude="*/venv/*" . 
+

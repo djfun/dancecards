@@ -1,0 +1,28 @@
+Some reminders:
+
+$ sqlite3 dancecards.db
+update singers set location = 'Char Netherton' where partnum = 28;
+select * from stickers where user_id = 48;
+.exit
+
+$ source dancecardsenv/bin/activate  # deactivate to exit
+$ nohup python ./dancecards.py &
+
+sqlite> .schema singers
+CREATE TABLE IF NOT EXISTS "singers" (
+  "id"  INTEGER PRIMARY KEY AUTOINCREMENT,
+  "partnum" INTEGER NOT NULL UNIQUE,
+  "name"  TEXT NOT NULL,
+  "location"  TEXT NOT NULL,
+  "email" TEXT NOT NULL,
+  "phone" TEXT NOT NULL DEFAULT '',
+  "code"  TEXT NOT NULL UNIQUE,
+  "voicepart" TEXT NOT NULL,
+  "photo" TEXT NOT NULL DEFAULT ''
+);
+sqlite> select * from singers where partnum=31;
+28|31|Catherine|Catherine Phillipson|c.hhrcbs@gmail.com||xuvmgnja|lead|c_hhrcbs_gmail_com
+sqlite> update singers set phone='484-387-7395' where partnum=31 ;
+sqlite> select * from singers where partnum=31;
+28|31|Catherine|Catherine Phillipson|c.hhrcbs@gmail.com|484-387-7395|xuvmgnja|lead|c_hhrcbs_gmail_com
+sqlite> .quit
