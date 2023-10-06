@@ -1,7 +1,42 @@
+/* Styles as used for NEHB 2022 */
 @media (max-width: 700px) {
   body {
     width: 520px;
   }
+}
+
+@media print {
+  body {
+    width: 10in;
+  }
+
+  .tenor {
+    color: #000 !important;
+  }
+
+  h2 span {
+    display none !important;
+  }
+  details, div { break-inside: avoid; }
+  div.namebox {
+    display: inline-block;
+    height: 4em;
+    width: 180px !important;
+    border: 1px black solid;
+    text-align: center;
+    vertical-align: middle;
+    margin: 2px 2px;
+    position: relative;
+  }
+}
+
+table.schedule {
+  border-collapse: collapse;
+}
+
+table.schedule td {
+  border: 1px solid lightgray;
+  padding: 5px;
 }
 
 @font-face {
@@ -17,7 +52,7 @@ body {
   font-family: "Computer Modern", sans-serif;
 }
 h1 {
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: bold;
   text-align: center;
 }
@@ -27,12 +62,12 @@ h2 {
   font-weight: normal;
 }
 h2 span {
-  text-decoration: underline;
+  font-weight: bold;
 }
 h2::before {
   content: "Your Name: ";
 }
-h3 {
+h3, summary {
   font-size: 1.2em;
   margin-top: 2em;
   margin-bottom: 0;
@@ -56,13 +91,16 @@ div.namebox div.image {
   background-size: contain;
 }
 div.empty::before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
 }
 div.ready {
   cursor: pointer;
+}
+img.popup-image-a {
+  max-width: 256px;
+  max-height: 256px;
 }
 span.name {
   vertical-align: middle;
@@ -87,6 +125,11 @@ span.address {
   color: black;
   font-size: 0.9em;
 }
+span.alert {
+  color: red;
+  font-size: 1em;
+}
+/* UKHB 2022 colours
 .tenor {
   color: #428BCA;
 }
@@ -97,9 +140,60 @@ span.address {
 .tenor div.filled {
   background-color: #cfdbe6;
 }
-.tenor div.image {
-  background-image: url('check_tenor.png');
+.baritone {
+  color: #5CB85C;
 }
+.baritone div.empty:hover {
+  background-color: #5CB85C;
+  color: black;
+}
+.baritone div.filled {
+  background-color: #cfe6cf;
+}
+.bass {
+  color: #e18f00;
+}
+.bass div.empty:hover {
+  background-color: #e18f00;
+  color: black;
+}
+.bass div.filled {
+  background-color: #ffdfb0;
+}
+.lead {
+  color: #D9534F;
+}
+.lead div.empty:hover {
+  background-color: #D9534F;
+  color: black;
+}
+.lead div.filled {
+  background-color: #f4dcdc;
+}
+ End of UKHB 2022 colours. */
+
+/* AHB 2023 colors */
+tr.rowhighlight td, tr.rowhighlight th{
+  background-color:#f0f8ff;
+}
+details.tenor summary, details.lead summary, details.baritone summary, details.bass summary {
+  font-size: 1.5em;
+}
+.tenor {
+  color: #DAA520;
+}
+.tenor div.empty:hover {
+  background-color: #eedf00;
+  color: black;
+}
+.tenor div.filled {
+  background-color: #ffe788;
+  color: black;
+}
+.tenor div.image {
+  background-image: url('check_gold.png');
+}
+
 .lead {
   color: #5CB85C;
 }
@@ -111,39 +205,55 @@ span.address {
   background-color: #cfe6cf;
 }
 .lead div.image {
-  background-image: url('check_lead.png');
+  background-image: url('check_green.png');
 }
+
 .baritone {
-  color: #e18f00;
+  color: #428BCA;
 }
 .baritone div.empty:hover {
-  background-color: #e18f00;
-  color: black;
+  background-color: #428BCA;
+  color: white;
 }
 .baritone div.filled {
-  background-color: #ffdfb0;
+  background-color: #cfdbe6;
+  /* color: black; */
 }
 .baritone div.image {
-  background-image: url('check_baritone.png');
+  background-image: url('check_blue.png');
 }
+
 .bass {
-  color: #D9534F;
+  color: #8B4513;
 }
 .bass div.empty:hover {
-  background-color: #D9534F;
-  color: black;
+  background-color: #954b1a;
+  color: white;
 }
 .bass div.filled {
-  background-color: #f4dcdc;
+  background-color: #ffdfb0;
+  color: #a55b2a;
 }
 .bass div.image {
-  background-image: url('check_bass.png');
+  background-image: url('check_brown.png');
 }
+
+/* End of AHB 2023 colours*/
+
+.stramp {
+  background-image: url('tramp.png');
+  background-position: bottom left;
+  /* background-size: contain; */
+  background-size: 3em;
+  background-repeat: no-repeat;
+}
+
 div.empty:hover div.image {
   background-image: url('check_black.png');
 }
 div#infos {
-  height: 3em;
+  display: none;
+  height: 1em; /* 3em */
 }
 div.infobox {
   text-align: center;
@@ -167,6 +277,11 @@ div.cover {
 div.cover.hidden {
   display: none;
 }
+
+span.hidden {
+  display: none;
+}
+
 div.popup {
   background-color: white;
   padding: 40px;
@@ -187,6 +302,21 @@ button.confirm {
   background-color: #1b3bc7;
   color: white;
 }
+
+button.confirm.hidden {
+  display: none;
+}
+
 button.deny {
-  background-color: #d2d2d2; 
+  background-color: #d2d2d2;
+}
+
+div.filled.ready {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.3;
+  }
 }
