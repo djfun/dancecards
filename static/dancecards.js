@@ -40,8 +40,10 @@ function handleClick(event) {
     /* Order of these must match order as output, with no spurious whitespace
      * "elements", at least until more logic is added to check for that. */
     nxtSib = event.currentTarget.firstChild.nextSibling
+
     nxtSib = nxtSib.nextSibling
-    /* document.getElementById("popup-message-phone").innerText = "phone: " + nxtSib.innerText */
+    hreftxt = nxtSib.innerText
+    //document.getElementById("popup-message-phone").innerText = "Phone: " + nxtSib.innerText
 
     nxtSib = nxtSib.nextSibling
     img = document.getElementById("popup-image-a")
@@ -53,6 +55,7 @@ function handleClick(event) {
     anchor.setAttribute('href', "mailto:"+ hreftxt)
     anchor.innerText = hreftxt
 
+    hreftxt = nxtSib.innerText
     document.getElementById("cover").classList.remove("hidden");
 }
 
@@ -70,7 +73,7 @@ function handleInfoClick(event) {
     anchor.innerText = hreftxt
 
     nxtSib = nxtSib.nextSibling
-    /* document.getElementById("popup-message-phone").innerText = "phone: " + nxtSib.innerText */
+    //document.getElementById("popup-message-phone").innerText = "Phone: " + nxtSib.innerText
 
     nxtSib = nxtSib.nextSibling
     img = document.getElementById("popup-image-a")
