@@ -102,7 +102,7 @@ h2::before {
 }
 h3, summary {
   font-size: 1.2em;
-  margin-top: 2em;
+/*   margin-top: 2em; */
   margin-bottom: 0;
 }
 h4 { /* This is a sneaky/underhanded accessibility hack; refactor! */
