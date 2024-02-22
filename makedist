@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # A simple-minded setup script for packaging the dancecards tools, sans user
 # (most) data.  Assumes a Debian or Ubuntu environment; if yours is different
