@@ -110,3 +110,76 @@ function addEvents() {
 
 document.getElementById("popup-confirm").addEventListener('click', confirmClick);
 document.getElementById("popup-deny").addEventListener('click', denyClick);
+
+// Songlist tools; see https://stackoverflow.com/questions/57907979/javascript-shuffle-table-rows
+function sortSongList() {
+  //get the parent table for convenience
+  let table = document.getElementById("songlist"); // ToDo: Fix hardcode
+
+  //1. get all rows
+  let rowsCollection = table.querySelectorAll("tr");
+
+  //2. convert to array
+  let rowsHeaders = Array.from(rowsCollection).slice(1,1);
+  let rows = Array.from(rowsCollection).slice(1);
+
+  //3. shuffle
+  shuffleArray(rows);
+
+  //4. add back to the DOM
+//  for (const row of rowsHeaders) {
+//    table.appendChild(row);
+//  }
+  for (const row of rows) {
+    table.appendChild(row);
+  }
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function compareValues(a, b) {
+  // return -1/0/1 based on what you "know" a and b
+  // are here. Numbers, text, some custom case-insensitive
+  // and natural number ordering, etc. That's up to you.
+  // A typical "do whatever JS would do" is:
+    if (isNumeric(a) && isNumeric(b)) {return a - b}
+    return (a<b) ? -1 : (a>b) ? 1 : 0;
+}
+
+function sortTable(colnum) {
+  // get all the rows in this table:
+  let table = document.getElementById("songlist"); // ToDo: Fix hardcode
+
+  let rows = Array.from(table.querySelectorAll(`tr`));
+
+  // but ignore the heading row:
+  rows = rows.slice(1);
+
+  // set up the queryselector for getting the indicated
+  // column from a row, so we can compare using its value:
+  let qs = `td:nth-child(${colnum})`;
+
+  // and then just... sort the rows:
+  rows.sort( (r1,r2) => {
+    // get each row's relevant column
+    let t1 = r1.querySelector(qs);
+    let t2 = r2.querySelector(qs);
+
+    // and then effect sorting by comparing their content:
+    return compareValues(t1.textContent,t2.textContent);
+  });
+
+  // and then the magic part that makes the sorting appear on-page:
+  rows.forEach(row => table.appendChild(row));
+}

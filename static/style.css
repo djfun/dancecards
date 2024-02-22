@@ -47,6 +47,22 @@
   }
 }
 
+button.randbutton {
+    font-size: 1.5em;
+}
+
+button.listbutton {
+    font-size: 1em;
+}
+
+table.songlist th,tr td {
+    font-size: 1.5em;
+}
+
+td.keysig {
+    font-weight: bold;
+}
+
 table.schedule {
   border-collapse: collapse;
 }

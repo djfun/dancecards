@@ -25,6 +25,52 @@ RALLYWYEAR = f'''{RALLY} {RALLYYEAR}'''
 RALLYSITE = ''
 APP_ADMIN = 'Del'
 
+# ToDo: Insert songlist from database.
+SONGLIST = f'''
+<button class="randbutton" onclick="sortSongList()">Randomize!</button>
+<table id='songlist' class='songlist'>
+<tr>
+<td><button class="listbutton" onclick="sortTable(1)">Ord</button></td><td class='keysig'><button class="listbutton" onclick="sortTable(2)">Key</button></td><td><button class="listbutton" onclick="sortTable(3)">Title</button></td>
+</tr>
+<tr>
+<td>1</td><td class='keysig'>Ab <i>(Bb)</i></td><td>If the Devil Danced (In Empty Pockets) <em>A nine-foot grand</em></td>
+</tr>
+<tr>
+<td>2</td><td class='keysig'>Db</td><td>All of Me <em>You took my kisses</em></td>
+</tr>
+<tr>
+<td>3</td><td class='keysig'>G</td><td>That's Life <em>That's life</em></td>
+</tr>
+<tr>
+<td>4</td><td class='keysig'>Ab <i>(B)</i></td><td>Bye Bye Love <em>dm dm dm d' dm</em></td>
+</tr>
+<tr>
+<td>5</td><td class='keysig'>Bb <i>(C)</i></td><td>Nice Work If You Can Get It <em>Take a minute, mister</em></td>
+</tr>
+<tr>
+<td>6</td><td class='keysig'>F <i>(G)</i></td><td>Theme from "New York, New York" <em>Da da, da da</em></td>
+</tr>
+<tr>
+<td>7</td><td class='keysig'>G <i>(A)</i></td><td>It Happened in Monterey <em>Sweet romance</em></td>
+</tr>
+<tr>
+<td>8</td><td class='keysig'>Eb <i>(F)</i></td><td>My Cup Runneth Over <em>doo doo doo doo</em></td>
+</tr>
+<tr>
+<td>9</td><td class='keysig'>A</td><td>Up on the Roof <em>Ba oo</em></td>
+</tr>
+<tr>
+<td>10</td><td class='keysig'>Eb <i>(F)</i></td><td>Wonderful One <em>Calling, calling dear</em></td>
+</tr>
+<tr>
+<td>11</td><td class='keysig'>D</td><td>Annie's Song <em>loo loo loo loo</em></td>
+</tr>
+<tr>
+<td>12</td><td class='keysig'>G</td><td>Midnight Serenade <em>pah pah puh doo pah</em></td>
+</tr>
+</table>
+'''
+
 # RALLYSPIN = 'https://spinthewheel.app/J8kjENMCAt'
 # RALLYSPIN = 'https://spinthewheel.app/Y4AEhvXJnX' # Added song numbers for preparedness checkers to use
 #  <li><a href="{RALLYSPIN}" target="_blank" rel="noopener noreferrer">Spin the Wheel</a> <i>(opens in a new tab)</i> This is a song randomizer many have used in the past. It is an app that has no association with our rally and will include ads. Use at your own risk.</li>
@@ -368,6 +414,14 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
   <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="{RALLYSITE}/static/style.css" />
+  <script type="text/javascript" defer>
+  function addSonglistEvents() {{
+  document.getElementById("songlist").querySelectorAll('th').forEach((th, position) => {{
+     th.addEventListener('click', evt => sortTable(position));
+  }});
+  }}
+  window.onload = addSonglistEvents;
+  </script>
 </head>
 <body>
   <h1><a onClick="window.location.reload()">{TITLE}</a></h1>
@@ -376,6 +430,10 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
   <details>
   <summary>Notes/Help/FAQ <i>(tap/click to expand/collapse)</i></summary>
   {FAQ}
+  </details>
+  <details>
+  <summary>Songlist <i>(tap/click to expand/collapse)</i></summary>
+  {SONGLIST}
   </details>
   <div id="infos"></div>
     <h4>Tenor</h4>
