@@ -9,8 +9,6 @@ import qrcode
 
 RALLY = 'NEHB 2023'
 
-#DATABASE = '/data/del/pers/barbershop/Harmony Brigade/AHB 2022/Tech/dancecards/dancecards.db'
-#DATABASE = '/home/pi/dancecards/dancecards.db'
 DATABASE = '/home/ubuntu/nehb2023/dancecards/dancecards.db'
 
 db = sqlite3.connect(DATABASE)
@@ -24,7 +22,6 @@ singers = cur.fetchall()
 
 
 #print("              All singers")
-#  return "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>NEHB</title></head><body>Harmony is for everyone!</body></html>"
 print(f'''<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>{RALLY} QR codes</title><style>@media print {{ tr {{ break-inside: avoid; }} }}</style></head><body>''')
 
 print('<table>')
