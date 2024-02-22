@@ -31,8 +31,7 @@ APP_ADMIN = 'Del'
 
 TITLE = f'{RALLYWYEAR} Quartet Tramp Dance Card'
 
-# RALLYSCHEDULE = f'''{RALLYSITE}/static/schedule.html'''
-RALLYSCHEDULE= 'https://www.nehb.net/2023-rally-schedule.html'
+RALLYSCHEDULE= '/static/schedule.html'
 
 FAQ = f'''
 <ul>
