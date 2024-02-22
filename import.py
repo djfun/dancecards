@@ -6,16 +6,6 @@ import sys
 import string
 import time
 
-# Assign these to the position of the column containing the relevant data in the .csv.
-# We calculate the unique ID and the photo fields on the fly.
-PARTNUM = 0
-NICK = 1
-NAME = 2
-EMAIL = 3
-VOICEPART = 4
-PHONE = 5
-LOCATION = 6
-
 DATABASE = './dancecards.db'
 
 def random_generator(size=6, chars=string.ascii_lowercase + string.digits):
