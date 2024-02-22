@@ -8,6 +8,7 @@ import time
 import qrcode
 
 RALLY = 'NEHB 2023'
+RALLYSITE = 'https://xqhb.ddns.net'
 
 DATABASE = '/home/ubuntu/nehb2023/dancecards/dancecards.db'
 
@@ -45,7 +46,7 @@ for singer in singers:
 # dancecards.europeanharmonybrigade.org
 #  print(f'''{s_name:<30} {s_email:<40} {s_voicepart:<20} https://nehb-demo.hopto.org/card/{s_code}''')
 #  uri = "https://nehb-demo.hopto.org/card/" + s_code
-  uri = "https://xqhb.ddns.net/card/" + s_code
+  uri = RALLYSITE + "/card/" + s_code
   qrimage_name = 'qrcode-'+s_code+'.png'
   print('<td style="width: 100mm; max-width: 101mm; min-width: 99mm;">')
   print(f'''<b>{s_name} ({s_voicepart})</b> <i>{s_fullname}</i><br>{boilerplate}<br><b>{uri}</b><br><img src="{qrimage_name}">''')
