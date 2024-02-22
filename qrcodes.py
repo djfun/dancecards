@@ -7,10 +7,10 @@ import string
 import time
 import qrcode
 
-RALLY = 'NEHB 2023'
+RALLY = 'UKHB 2024'
 RALLYSITE = 'https://xqhb.ddns.net'
 
-DATABASE = '/home/ubuntu/nehb2023/dancecards/dancecards.db'
+DATABASE = '/home/ubuntu/ukhb2024/dancecards/dancecards.db'
 
 db = sqlite3.connect(DATABASE)
 cur = db.cursor()
