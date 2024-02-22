@@ -361,6 +361,8 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
   if cur_super == 1 and trampToSingCount == 0 and supertrampToSingCount == 0:
       cur_super_string = " SUPER TRAMP!"
 
+# <h4> tags added in block below to aid in accessibility for the blind
+
   returnstring = f'''<!DOCTYPE html><html>
 <head>
   <title>{TITLE}</title>
@@ -371,29 +373,34 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
 <body>
   <h1><a onClick="window.location.reload()">{TITLE}</a></h1>
   <h2><span class="selfservice {voicepart}"><a href="{RALLYSITE}/selfserve/{code}">{username}</a> ({voicepart}){cur_super_string}</span></h2>
+    <h4>Notes</h4>
   <details>
   <summary>Notes/Help/FAQ <i>(tap/click to expand/collapse)</i></summary>
   {FAQ}
   </details>
   <div id="infos"></div>
+    <h4>Tenor</h4>
   <details class="tenor" {tenoropen}>
     <summary>Tenor ({tenorlist[1]} to sing with):</summary>
     <div class="tenor">
     {tenorlist[0]}
     </div>
   </details>
+    <h4>Lead</h4>
   <details class="lead" {leadopen}>
     <summary>Lead ({leadlist[1]} to sing with):</summary>
     <div class="lead">
     {leadlist[0]}
     </div>
   </details>
+    <h4>Baritone</h4>
   <details class="baritone" {baritoneopen}>
     <summary>Baritone ({baritonelist[1]} to sing with):</summary>
     <div class="baritone">
     {baritonelist[0]}
     </div>
   </details>
+    <h4>Bass</h4>
   <details class="bass" {bassopen}>
     <summary>Bass ({basslist[1]} to sing with):</summary>
     <div class="bass">
@@ -402,7 +409,7 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
   </details>'''
 
   if guestlist[0] != "" :
-      returnstring += f'''<details class="guest" {guestopen}>
+      returnstring += f'''<h4>Optional</h4><details class="guest" {guestopen}>
     <summary>Optional ({guestlist[1]} to sing with):</summary>
     <div class="guest">
     {guestlist[0]}
