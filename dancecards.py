@@ -18,22 +18,25 @@ socketio.init_app(app, cors_allowed_origins="*")
 
 DATABASE = './dancecards.db'
 
-RALLY = 'NEHB 2023'
 RALLYSITE = '/NEHB2023'
+RALLY = 'UKHB'
+RALLYYEAR = '2024'
+RALLYWYEAR = f'''{RALLY} {RALLYYEAR}'''
+
 RALLYSITE = ''
 APP_ADMIN = 'Del'
 
 #RALLYSPIN = 'https://spinthewheel.app/w6xVIzvFEU/link'
 RALLYSPIN = 'https://spinthewheel.app/chCVHAjKya/link'
 
-TITLE = f'{RALLY} Quartet Tramp Dance Card'
+TITLE = f'{RALLYWYEAR} Quartet Tramp Dance Card'
 
 # RALLYSCHEDULE = f'''{RALLYSITE}/static/schedule.html'''
 RALLYSCHEDULE= 'https://www.nehb.net/2023-rally-schedule.html'
 
 FAQ = f'''
 <ul>
-  <li><a href="{RALLYSCHEDULE}" target="_blank" rel="noopener noreferrer">{RALLY} Schedule</a> <i>(opens in a new tab)</i></li>
+  <li><a href="{RALLYSCHEDULE}" target="_blank" rel="noopener noreferrer">{RALLYWYEAR} Schedule</a> <i>(opens in a new tab)</i></li>
   <li>When in doubt, refresh the page, either by tapping/clicking on "{TITLE}" at the top of the page or using your browser's refresh feature</li>
   <li>Using the venue's WiFi is usually more reliable than your cell carrier's network</li>
   <li>A "Quartet Tramp" is a person who sings one or more of the <i>current</i> Rally's official songs with everyone at the Rally who has a <i>different</i> voice part</li>
@@ -175,7 +178,7 @@ def renderList(singers, voicepart, cursinger):
 
 @app.route('/')
 def root():
-  return f'''<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>{RALLY}</title></head><body>Harmony is for everyone!</body></html>'''
+  return f'''<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>{RALLYWYEAR}</title></head><body>Harmony is for everyone!</body></html>'''
 
 @app.route('/selfserve/<code>', methods=['GET', 'POST'])
 def selfService(code):
