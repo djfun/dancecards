@@ -18,7 +18,6 @@ socketio.init_app(app, cors_allowed_origins="*")
 
 DATABASE = './dancecards.db'
 
-RALLYSITE = '/NEHB2023'
 RALLY = 'UKHB'
 RALLYYEAR = '2024'
 RALLYWYEAR = f'''{RALLY} {RALLYYEAR}'''
