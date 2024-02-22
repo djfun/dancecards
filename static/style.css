@@ -89,6 +89,12 @@ h3, summary {
   margin-top: 2em;
   margin-bottom: 0;
 }
+h4 { /* This is a sneaky/underhanded accessibility hack; refactor! */
+  font-size: 0.25em;
+  margin-bottom: 0;
+  color: white; /* Specifically, this. */
+}
+
 div.namebox {
   display: inline-block;
   height: 5em;
