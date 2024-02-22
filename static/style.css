@@ -154,10 +154,10 @@ span.alert {
 }
 
 tr.rowhighlight td, tr.rowhighlight th{
-  background-color:#f0f8ff;
+    background-color:#f0f8ff;
 }
 details.tenor summary, details.lead summary, details.baritone summary, details.bass summary {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 /* These are intended to match badge lanyard colours. DO NOT CHANGE HERE.
@@ -281,7 +281,7 @@ button.deny {
 }
 
 div.filled.ready {
-  animation: blinker 2s linear infinite;
+    animation: blinker 2s linear infinite;
 }
 
 @keyframes blinker {
