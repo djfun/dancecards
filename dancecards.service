@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 User=ubuntu
-Group=www-data
-WorkingDirectory=/home/ubuntu/ahb2023/dancecards
-Environment="PATH=/home/ubuntu/ahb2023/dancecards/venv/bin"
-ExecStart=/home/ubuntu/ahb2023/dancecards/venv/bin/uwsgi --ini dancecards.ini
+Group=home
+WorkingDirectory=/home/ubuntu/nchb24
+Environment="PATH=/home/ubuntu/nchb24/venv/bin"
+ExecStart=/home/ubuntu/nchb24/venv/bin/uwsgi --ini dancecards.ini
 
 [Install]
 WantedBy=multi-user.target
