@@ -149,7 +149,26 @@ def renderList(singers, voicepart, cursinger):
       if s_supertramp:
         rlist = rlist + "stramp "
 
-      rlist = rlist + f'''">'''
+      rlist = rlist + f'''"''' # Close the class list
+
+      # Add a title to this div to make it more accessible to the sight-impaired:
+      if s_sent and s_filled:
+          div_title_text = f'''You and {s_prefname} sent each other a sticker!'''
+          a_label_text = f'''You and {s_prefname} sent each other a sticker!'''
+      elif s_sent and not s_filled:
+          div_title_text = f'''You sent {s_prefname} a sticker; {s_prefname} hasn't responded'''
+          a_label_text = f'''You sent {s_prefname} a sticker; {s_prefname} hasn't responded'''
+      elif not s_sent and s_filled:
+          div_title_text = f'''{s_prefname} sent you a sticker; you haven't responded'''
+          a_label_text = f'''{s_prefname} sent you a sticker; you haven't responded'''
+      else:
+          div_title_text = f'''You and {s_prefname} haven't sung together yet'''
+          a_label_text = f'''You and {s_prefname} haven't sung together yet'''
+
+      div_title = 'title="' + div_title_text + '"'
+      div_aria_label = 'aria-label="' + a_label_text + '"'
+
+      rlist = rlist + div_title + div_aria_label + f'''>''' # Close the opening div
 
       # These must be in this order since the JavaScript current assumes they are thus.
       rlist = rlist + f'''<span class="name">{s_prefname}</span>''' #  ({s_partnum})
