@@ -25,8 +25,9 @@ RALLYWYEAR = f'''{RALLY} {RALLYYEAR}'''
 RALLYSITE = ''
 APP_ADMIN = 'Del'
 
-#RALLYSPIN = 'https://spinthewheel.app/w6xVIzvFEU/link'
-RALLYSPIN = 'https://spinthewheel.app/chCVHAjKya/link'
+# RALLYSPIN = 'https://spinthewheel.app/J8kjENMCAt'
+# RALLYSPIN = 'https://spinthewheel.app/Y4AEhvXJnX' # Added song numbers for preparedness checkers to use
+#  <li><a href="{RALLYSPIN}" target="_blank" rel="noopener noreferrer">Spin the Wheel</a> <i>(opens in a new tab)</i> This is a song randomizer many have used in the past. It is an app that has no association with our rally and will include ads. Use at your own risk.</li>
 
 TITLE = f'{RALLYWYEAR} Quartet Tramp Dance Card'
 
@@ -66,7 +67,6 @@ FAQ = f'''
   <li>Use your phone or tablet's "Add to Home Screen" option to make it easy to open</li>
   <li>Still stumped? Find {APP_ADMIN}, who will help you <i>after</i> you sing together...</li>
   <li><a href="{RALLYSITE}/static/credits.html" target="_blank" rel="noopener noreferrer">Credits/About</a> <i>(opens in a new tab)</i></li>
-  <li><a href="{RALLYSPIN}" target="_blank" rel="noopener noreferrer">Spin the Wheel</a> <i>(opens in a new tab)</i> This is a song randomizer many have used in the past. It is an app that has no association with our rally and will include ads. Use at your own risk.</li>
 </ul>
 '''
 
