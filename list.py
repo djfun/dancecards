@@ -8,7 +8,6 @@ import time
 
 DATABASE = './dancecards.db'
 
-#tld = 'xqhb.ddns.net/ukhb2023'
 tld = 'xqhb.ddns.net'
 
 db = sqlite3.connect(DATABASE)
