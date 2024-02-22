@@ -21,6 +21,7 @@ DATABASE = './dancecards.db'
 RALLY = 'NEHB 2023'
 RALLYSITE = '/NEHB2023'
 RALLYSITE = ''
+APP_ADMIN = 'Del'
 
 #RALLYSPIN = 'https://spinthewheel.app/w6xVIzvFEU/link'
 RALLYSPIN = 'https://spinthewheel.app/chCVHAjKya/link'
@@ -61,7 +62,7 @@ FAQ = f'''
   <li>"I heard <i>insert name</i> left the rally early; what happens?" In most cases we will mark the person as optional on the dancecard; please be patient and keep singing!</li>
   <li>This "app" will work on your phone, tablet, laptop, or wherever there's a decent internet browser</li>
   <li>Use your phone or tablet's "Add to Home Screen" option to make it easy to open</li>
-  <li>Still stumped? Find Del and he'll help you <i>after</i> you sing with him...</li>
+  <li>Still stumped? Find {APP_ADMIN}, who will help you <i>after</i> you sing together...</li>
   <li><a href="{RALLYSITE}/static/credits.html" target="_blank" rel="noopener noreferrer">Credits/About</a> <i>(opens in a new tab)</i></li>
   <li><a href="{RALLYSPIN}" target="_blank" rel="noopener noreferrer">Spin the Wheel</a> <i>(opens in a new tab)</i> This is a song randomizer many have used in the past. It is an app that has no association with our rally and will include ads. Use at your own risk.</li>
 </ul>
