@@ -1,4 +1,9 @@
-/* Styles as used for NEHB 2022 */
+/* Styles as used for presenting Harmony Brigade Dance Cards. */
+/* You should not have to edit this file to change colors. */
+
+@import url("rallystyle.css"); /* If present: for matching rally-specific colors, and or the supertramp
+                                  aspirant image. */
+
 @media (max-width: 700px) {
   body {
     width: 520px;
@@ -11,6 +16,18 @@
   }
 
   .tenor {
+    color: #000 !important;
+  }
+
+  .lead {
+    color: #000 !important;
+  }
+
+  .baritone {
+    color: #000 !important;
+  }
+
+  .bass {
     color: #000 !important;
   }
 
@@ -129,116 +146,62 @@ span.alert {
   color: red;
   font-size: 1em;
 }
-/* UKHB 2022 colours
-.tenor {
-  color: #428BCA;
-}
-.tenor div.empty:hover {
-  background-color: #428BCA;
-  color: white;
-}
-.tenor div.filled {
-  background-color: #cfdbe6;
-}
-.baritone {
-  color: #5CB85C;
-}
-.baritone div.empty:hover {
-  background-color: #5CB85C;
-  color: black;
-}
-.baritone div.filled {
-  background-color: #cfe6cf;
-}
-.bass {
-  color: #e18f00;
-}
-.bass div.empty:hover {
-  background-color: #e18f00;
-  color: black;
-}
-.bass div.filled {
-  background-color: #ffdfb0;
-}
-.lead {
-  color: #D9534F;
-}
-.lead div.empty:hover {
-  background-color: #D9534F;
-  color: black;
-}
-.lead div.filled {
-  background-color: #f4dcdc;
-}
- End of UKHB 2022 colours. */
 
-/* AHB 2023 colors */
 tr.rowhighlight td, tr.rowhighlight th{
   background-color:#f0f8ff;
 }
 details.tenor summary, details.lead summary, details.baritone summary, details.bass summary {
   font-size: 1.5em;
 }
+
+/* These are intended to match badge lanyard colours. DO NOT CHANGE HERE.
+   Instead, create your own in rallystyle.css. */
 .tenor {
-  color: #DAA520;
+  color: var(--hb-tenor, #428BCA);
 }
 .tenor div.empty:hover {
-  background-color: #eedf00;
-  color: black;
+  background-color: var(--hb-tenor-hover-bg, #428BCA);
+  color: var(--hb-tenor-hover, white);
 }
 .tenor div.filled {
-  background-color: #ffe788;
-  color: black;
+  background-color: var(--hb-tenor-filled-bg, #cfdbe6);
+  color: var(--hb-tenor-filled, black);
 }
-.tenor div.image {
-  background-image: url('check_gold.png');
-}
-
-.lead {
-  color: #5CB85C;
-}
-.lead div.empty:hover {
-  background-color: #5CB85C;
-  color: black;
-}
-.lead div.filled {
-  background-color: #cfe6cf;
-}
-.lead div.image {
-  background-image: url('check_green.png');
-}
-
 .baritone {
-  color: #428BCA;
+  color: var(--hb-baritone, #5CB85C);
 }
 .baritone div.empty:hover {
-  background-color: #428BCA;
-  color: white;
+  background-color: var(--hb-baritone-hover-bg, #5CB85C);
+  color: var(--hb-baritone-hover, black);
 }
 .baritone div.filled {
-  background-color: #cfdbe6;
-  /* color: black; */
+  background-color: var(--hb-baritone-filled-bg, #cfe6cf);
+  color: var(--hb-baritone-filled, black);
 }
-.baritone div.image {
-  background-image: url('check_blue.png');
-}
-
 .bass {
-  color: #8B4513;
+  color: var(--hb-bass, #e18f00);
 }
 .bass div.empty:hover {
-  background-color: #954b1a;
-  color: white;
+  background-color: var(--hb-bass-hover-bg, #e18f00);
+  color: var(--hb-bass-hover, black);
 }
 .bass div.filled {
-  background-color: #ffdfb0;
-  color: #a55b2a;
+  background-color: var(--hb-bass-filled-bg, #ffdfb0);
+  color: var(--hb-bass-filled, black);
 }
-.bass div.image {
-  background-image: url('check_brown.png');
+.lead {
+  color: var(--hb-lead, #D9534F);
 }
+.lead div.empty:hover {
+  background-color: var(--hb-lead-hover-bg, #D9534F);
+  color: var(--hb-lead-hover, black);
+}
+.lead div.filled {
+  background-color: var(--hb-lead-filled-bg, #f4dcdc);
+  color: var(--hb-lead-filled, black);
+}
+/*  End of HB colours. */
 
-/* End of AHB 2023 colours*/
 
 .stramp {
   background-image: url('tramp.png');

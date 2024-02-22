@@ -1,0 +1,56 @@
+/* NCHB colors */
+:root {
+    /* Tenor color is Red */
+    --hb-tenor: #e02a2a;
+    --hb-tenor-hover-bg: #e02a2a;
+    --hb-tenor-hover: white;
+    --hb-tenor-filled-bg: #f4dcdc;
+    --hb-tenor-filled: red;
+
+    /* Lead color is Green */
+    --hb-lead: #5CB85C;
+    --hb-lead-hover-bg: #5CB85C;
+    --hb-lead-hover: white;
+    --hb-lead-filled-bg: #cfe6cf;
+    --hb-lead-filled: black;
+
+    /* Baritone color is Purple */
+    --hb-baritone: #8c12c9;
+    --hb-baritone-hover-bg: #8c12c9;
+    --hb-baritone-hover: white;
+    --hb-baritone-filled-bg: #d083f7;
+    --hb-baritone-filled: black;
+
+    /* Bass color is Blue */
+    --hb-bass: #428BCA;
+    --hb-bass-hover-bg: #428BCA;
+    --hb-bass-hover: white;
+    --hb-bass-filled-bg:  #add8e6;
+    --hb-bass-filled: black;
+}
+
+/* CSS variabls don't work in url() yet, so here's how to get the checkmarks in place. */
+.tenor div.image {
+  background-image: url('check_red.png');
+}
+
+.lead div.image {
+  background-image: url('check_green.png');
+}
+
+.baritone div.image {
+  background-image: url('check_purple.png');
+}
+
+.bass div.image {
+  background-image: url('check_blue.png');
+}
+
+/* random stuff
+tr.rowhighlight td, tr.rowhighlight th{
+  background-color:#f0f8ff;
+}
+details.tenor summary, details.lead summary, details.baritone summary, details.bass summary {
+  font-size: 1.5em;
+}
+ */

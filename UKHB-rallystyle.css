@@ -1,0 +1,16 @@
+/* UKHB rally-specific hooks. */
+.tenor div.image {
+    background-image: url('check_blue.png');
+}
+
+.lead div.image {
+  background-image: url('check_red.png');
+}
+
+.baritone div.image {
+  background-image: url('check_green.png');
+}
+
+.bass div.image {
+  background-image: url('check_brown.png');
+}
