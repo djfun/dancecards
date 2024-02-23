@@ -1,6 +1,6 @@
 __pycache__
-backup*
-*.txt
+backup/*
+backup.sh
 *.db
-*.csv
+dancecards.csv
 demo.html
