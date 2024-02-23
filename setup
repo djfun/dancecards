@@ -9,7 +9,7 @@ if [ -d "./venv" ]; then
     exit 1
 fi
 
-declare -a isarray=('libjpeg-dev' 'python3' 'sqlite3')
+declare -a isarray=('libjpeg-dev' 'python3' 'sqlite3' 'python3-venv')
 declare -a installed=()
 declare -a not_installed=()
 
