@@ -45,6 +45,7 @@ pip install python-socketio
 pip install Flask
 pip install flask-socketio
 pip install gevent-websocket
+pip install jinja2
 
 echo "... your environment should be ready."
 echo "You can activate it by running 'source venv/bin/activate'"
