@@ -1,7 +1,7 @@
 import os
 import json
 import sqlite3
-from flask import Flask, flash, g, request, redirect, url_for
+from flask import Flask, flash, g, request, redirect, url_for, render_template
 from flask_socketio import SocketIO, emit, join_room
 from werkzeug.utils import secure_filename
 from PIL import Image, ImageOps
@@ -226,29 +226,12 @@ def selfService(code):
   if s_supertramp != 0:
       stchecked = "checked"
 
-  return f'''<!DOCTYPE html><html>
-<head>
-  <title>{TITLE} Self Service</title>
-  <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{RALLYSITE}/static/style.css" />
-</head>
-<body>
-<img id="popup-image-a" height="256" src="{RALLYSITE}/static/pix/{s_photo}.jpg" onerror="this.src='{RALLYSITE}/static/pix/no_picture.jpg';" />
-<br/>
-<form method="post" enctype="multipart/form-data">
-  <table>
-  <tr><td><label for="self-picture">Tap/Click this to take/upload your picture:</label><br/><i>What it actually does is device and browser dependent...</i></td><td><input id="self-picture" type="file" value="New Picture" name="file" accept="image/*" /></td></tr>
-
-  <tr><td><label for="self-st">Tick the box if you are going for Quartet Super Tramp:</label></td><td><input id="self-st" type="checkbox" name="supertramp" {stchecked} ></td></tr>
-  <tr><td><label for="self-submit">Tap/Click to make changes:</label></td><td><input id="self-submit" type="submit" value="Upload/Save" /></td></tr>
-  </table>
-</form>
-<br/>When you are done: <button value="done" onclick="window.location.href='{RALLYSITE}/card/{code}';">Back to your dancecard...</button>
-<br/><span class="alert">{formMsg}</span>
-</body>
-</html>'''
-
+  return render_template('selfserve.html',
+                         TITLE=TITLE,
+                         RALLYSITE=RALLYSITE,
+                         stchecked=stchecked,
+                         code=code,
+                         formMsg=formMsg)
 
 @app.route('/card/<code>')
 def displayCard(code):
