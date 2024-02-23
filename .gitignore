@@ -4,3 +4,4 @@ backup.sh
 *.db
 dancecards.csv
 demo.html
+venv/
