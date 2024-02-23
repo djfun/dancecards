@@ -302,78 +302,25 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
 
 # <h4> tags added in block below to aid in accessibility for the blind
 
-  returnstring = f'''<!DOCTYPE html><html>
-<head>
-  <title>{TITLE}</title>
-  <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{RALLYSITE}/static/style.css" />
-  <script type="text/javascript" defer>
-  function addSonglistEvents() {{
-  document.getElementById("songlist").querySelectorAll('th').forEach((th, position) => {{
-     th.addEventListener('click', evt => sortTable(position));
-  }});
-  }}
-  window.onload = addSonglistEvents;
-  </script>
-</head>
-<body>
-  <h1><a onClick="window.location.reload()">{TITLE}</a></h1>
-  <h2><span class="selfservice {voicepart}"><a href="{RALLYSITE}/selfserve/{code}">{username}</a> ({voicepart}){cur_super_string}</span></h2>
-    <h4>Notes</h4>
-  <details>
-  <summary>Notes/Help/FAQ <i>(tap/click to expand/collapse)</i></summary>
-  {FAQ}
-  </details>
-  <details>
-  <summary>Songlist <i>(tap/click to expand/collapse)</i></summary>
-  {SONGLIST}
-  </details>
-  <div id="infos"></div>
-    <h4>Tenor</h4>
-  <details class="tenor" {tenoropen}>
-    <summary>Tenor ({tenorlist[1]} to sing with):</summary>
-    <div class="tenor">
-    {tenorlist[0]}
-    </div>
-  </details>
-    <h4>Lead</h4>
-  <details class="lead" {leadopen}>
-    <summary>Lead ({leadlist[1]} to sing with):</summary>
-    <div class="lead">
-    {leadlist[0]}
-    </div>
-  </details>
-    <h4>Baritone</h4>
-  <details class="baritone" {baritoneopen}>
-    <summary>Baritone ({baritonelist[1]} to sing with):</summary>
-    <div class="baritone">
-    {baritonelist[0]}
-    </div>
-  </details>
-    <h4>Bass</h4>
-  <details class="bass" {bassopen}>
-    <summary>Bass ({basslist[1]} to sing with):</summary>
-    <div class="bass">
-    {basslist[0]}
-    </div>
-  </details>'''
-
-  if guestlist[0] != "" :
-      returnstring += f'''<h4>Optional</h4><details class="guest" {guestopen}>
-    <summary>Optional ({guestlist[1]} to sing with):</summary>
-    <div class="guest">
-    {guestlist[0]}
-    </div>
-  </details>'''
-
-  returnstring += f'''<div id="cover" class="cover hidden"><div class="popup"><div id="popup-message-photo"><img id="popup-image-a" height="256" src="" onerror="this.src='{RALLYSITE}/static/pix/no_picture.jpg';" /></div><div id="popup-message-email" class="hidden"><a id="popup-email-a" href=""></a></div><div id="popup-message-phone" class="hidden"></div><div id="popup-message"></div><button id="popup-confirm" class="confirm" value="yes">Send</button><button id="popup-deny" class="deny" value="no">Cancel</button></div></div>
-  <script src="{RALLYSITE}/static/socket.io/socket.io.js"></script>
-  <script src="{RALLYSITE}/static/dancecards.js"></script>
-</body>
-</html>'''
-
-  return returnstring
+  return render_template('card.html',
+                         TITLE=TITLE,
+                         RALLYSITE=RALLYSITE,
+                         voicepart=voicepart,
+                         code=code,
+                         username=username,
+                         cur_super_string=cur_super_string,
+                         FAQ=FAQ,
+                         SONGLIST=SONGLIST,
+                         tenoropen=tenoropen,
+                         tenorlist=tenorlist,
+                         leadopen=leadopen,
+                         leadlist=leadlist,
+                         baritoneopen=baritoneopen,
+                         baritonelist=baritonelist,
+                         bassopen=bassopen,
+                         basslist=basslist,
+                         guestopen=guestopen,
+                         guestlist=guestlist)
 
 def update_node(user_id, node_user_id, code):
   cur = get_db().cursor()
