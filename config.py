@@ -1,2 +1,12 @@
 DATABASE = './dancecards.db'
 IMPORT_CSV = 'dancecards.csv'
+UPLOAD_FOLDER = './static/pix' # Simplicity
+DEBUG = True
+RALLY = 'UKHB'
+RALLYYEAR = '2024'
+RALLYWYEAR = f'''{RALLY} {RALLYYEAR}'''
+RALLYSITE = ''
+APP_ADMIN = 'Del'
+TITLE = f'{RALLYWYEAR} Quartet Tramp Dance Card'
+RALLYSCHEDULE= '/static/schedule.html'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
