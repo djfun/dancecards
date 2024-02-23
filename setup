@@ -6,6 +6,7 @@
 
 if [ -d "./venv" ]; then
     echo "Your python3 virtual environment already exists. Exiting to not clobber your work."
+    echo "You can activate it by running 'source venv/bin/activate'"
     exit 1
 fi
 
@@ -46,3 +47,4 @@ pip install flask-socketio
 pip install gevent-websocket
 
 echo "... your environment should be ready."
+echo "You can activate it by running 'source venv/bin/activate'"
