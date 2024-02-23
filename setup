@@ -15,7 +15,7 @@ declare -a not_installed=()
 
 echo "Testing for system dependencies..."
 for i in "${isarray[@]}" ; do
-    if /usr/bin/apt list  2>/dev/null | grep -q "^${i}/" ;then 
+    if /usr/bin/apt list --installed  2>/dev/null | grep -q "^${i}/" ;then 
         installed+=(${i})
     else
         not_installed+=(${i})
