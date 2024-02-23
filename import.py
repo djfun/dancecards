@@ -5,8 +5,7 @@ import sqlite3
 import sys
 import string
 import time
-
-DATABASE = './dancecards.db'
+from config import *
 
 def random_generator(size=6, chars=string.ascii_lowercase + string.digits):
   return ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(size))
@@ -16,7 +15,7 @@ if os.path.isfile(DATABASE):
   if not input("Do you want to continue? (y/n): ").lower().strip()[:1] == "y": sys.exit(1)
   os.remove(DATABASE)
 
-with open('dancecards.csv', newline='') as f:
+with open(IMPORT_CSV, newline='') as f:
   reader = csv.DictReader(f)
   data = list(reader)
 
