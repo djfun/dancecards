@@ -126,7 +126,18 @@ def root():
 def selfService(code):
   cur = get_db().cursor()
 
-  cur.execute("SELECT singers.id,singers.prefname,singers.name,singers.location,singers.email,singers.voicepart,singers.partnum,singers.phone,singers.photo,singers.supertramp from singers where singers.code=?", (code,))
+  cur.execute("""SELECT singers.id,
+                        singers.prefname,
+                        singers.name,
+                        singers.location,
+                        singers.email,
+                        singers.voicepart,
+                        singers.partnum,
+                        singers.phone,
+                        singers.photo,
+                        singers.supertramp
+                 from singers
+                 where singers.code=?""", (code,))
   singer = cur.fetchone()
 
   if not singer:
@@ -205,7 +216,13 @@ def selfService(code):
 def displayCard(code):
   cur = get_db().cursor()
 
-  cur.execute("SELECT singers.id,singers.prefname,singers.partnum,singers.voicepart,singers.supertramp from singers where singers.code=?", (code,))
+  cur.execute("""SELECT singers.id,
+                        singers.prefname,
+                        singers.partnum,
+                        singers.voicepart,
+                        singers.supertramp
+                 from singers
+                 where singers.code=?""", (code,))
   currentUser = cur.fetchone()
 
   if not currentUser:
@@ -218,14 +235,29 @@ def displayCard(code):
   cur_super = currentUser[4]
   cur_super_string = ""
 
-  cur.execute("SELECT distinct singers.id,singers.prefname,singers.name,singers.location,singers.email,singers.voicepart,singers.partnum,singers.phone,singers.photo,singers.supertramp,singers.asleep,singers.left,singers.opt, \
-case when stickers.id != '' then 1 else 0 end as filled, \
-case when back.id != '' then 1 else 0 end as sent \
-from singers \
-left join stickers \
-on stickers.receiver_id=? and stickers.user_id=singers.id \
-left join stickers as back \
-on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (user_id,user_id))
+  cur.execute("""SELECT distinct singers.id,
+                                 singers.prefname,
+                                 singers.name,
+                                 singers.location,
+                                 singers.email,
+                                 singers.voicepart,
+                                 singers.partnum,
+                                 singers.phone,
+                                 singers.photo,
+                                 singers.supertramp,
+                                 singers.asleep,
+                                 singers.left,
+                                 singers.opt,
+                                 case when stickers.id != '' then 1 else 0 end as filled,
+                                 case when back.id != '' then 1 else 0 end as sent
+                 from singers
+                 left join stickers
+                           on stickers.receiver_id=?
+                           and stickers.user_id=singers.id
+                 left join stickers as back
+                           on back.receiver_id=singers.id
+                           and back.user_id=?
+                 ORDER BY prefname, partnum""", (user_id,user_id))
 
   tenoropen = ""
   leadopen = ""
@@ -292,15 +324,29 @@ on back.receiver_id=singers.id and back.user_id=? ORDER BY prefname, partnum", (
 
 def update_node(user_id, node_user_id, code):
   cur = get_db().cursor()
-  cur.execute("SELECT singers.id,singers.prefname,singers.name,singers.location,singers.email,singers.voicepart,singers.partnum,singers.phone,singers.photo,singers.supertramp,singers.asleep,singers.left,singers.opt, \
-case when stickers.id != '' then 1 else 0 end as filled, \
-case when back.id != '' then 1 else 0 end as sent \
-from singers \
-left join stickers \
-on stickers.receiver_id=? and stickers.user_id=singers.id \
-left join stickers as back \
-on back.receiver_id=singers.id and back.user_id=? \
-where singers.id=?", (user_id,user_id,node_user_id))
+  cur.execute("""SELECT singers.id,
+                        singers.prefname,
+                        singers.name,
+                        singers.location,
+                        singers.email,
+                        singers.voicepart,
+                        singers.partnum,
+                        singers.phone,
+                        singers.photo,
+                        singers.supertramp,
+                        singers.asleep,
+                        singers.left,
+                        singers.opt,
+                        case when stickers.id != '' then 1 else 0 end as filled,
+                        case when back.id != '' then 1 else 0 end as sent
+                 from singers
+                 left join stickers
+                           on stickers.receiver_id=?
+                           and stickers.user_id=singers.id
+                 left join stickers as back
+                           on back.receiver_id=singers.id
+                           and back.user_id=?
+                 where singers.id=?""", (user_id,user_id,node_user_id))
   singers = cur.fetchall()
   if singers is not None:
       renderedList = renderList(singers, singers[0][5], None)
