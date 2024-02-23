@@ -16,52 +16,6 @@ socketio = SocketIO(app)
 
 socketio.init_app(app, cors_allowed_origins="*")
 
-# ToDo: Insert songlist from database.
-SONGLIST = f'''
-<button class="randbutton" onclick="sortSongList()">Randomize!</button>
-<table id='songlist' class='songlist'>
-<tr>
-<td><button class="listbutton" onclick="sortTable(1)">Ord</button></td><td class='keysig'><button class="listbutton" onclick="sortTable(2)">Key</button></td><td><button class="listbutton" onclick="sortTable(3)">Title</button></td>
-</tr>
-<tr>
-<td>1</td><td class='keysig'>Ab <i>(Bb)</i></td><td>If the Devil Danced (In Empty Pockets) <em>A nine-foot grand</em></td>
-</tr>
-<tr>
-<td>2</td><td class='keysig'>Db</td><td>All of Me <em>You took my kisses</em></td>
-</tr>
-<tr>
-<td>3</td><td class='keysig'>G</td><td>That's Life <em>That's life</em></td>
-</tr>
-<tr>
-<td>4</td><td class='keysig'>Ab <i>(B)</i></td><td>Bye Bye Love <em>dm dm dm d' dm</em></td>
-</tr>
-<tr>
-<td>5</td><td class='keysig'>Bb <i>(C)</i></td><td>Nice Work If You Can Get It <em>Take a minute, mister</em></td>
-</tr>
-<tr>
-<td>6</td><td class='keysig'>F <i>(G)</i></td><td>Theme from "New York, New York" <em>Da da, da da</em></td>
-</tr>
-<tr>
-<td>7</td><td class='keysig'>G <i>(A)</i></td><td>It Happened in Monterey <em>Sweet romance</em></td>
-</tr>
-<tr>
-<td>8</td><td class='keysig'>Eb <i>(F)</i></td><td>My Cup Runneth Over <em>doo doo doo doo</em></td>
-</tr>
-<tr>
-<td>9</td><td class='keysig'>A</td><td>Up on the Roof <em>Ba oo</em></td>
-</tr>
-<tr>
-<td>10</td><td class='keysig'>Eb <i>(F)</i></td><td>Wonderful One <em>Calling, calling dear</em></td>
-</tr>
-<tr>
-<td>11</td><td class='keysig'>D</td><td>Annie's Song <em>loo loo loo loo</em></td>
-</tr>
-<tr>
-<td>12</td><td class='keysig'>G</td><td>Midnight Serenade <em>pah pah puh doo pah</em></td>
-</tr>
-</table>
-'''
-
 jinja_file_loader = FileSystemLoader('templates/')
 jinja_env = Environment(loader=jinja_file_loader)
 template = jinja_env.get_template('faq.html')
@@ -69,6 +23,10 @@ FAQ = template.render(RALLYSCHEDULE=RALLYSCHEDULE,
                       RALLYWYEAR=RALLYWYEAR,
                       APP_ADMIN=APP_ADMIN,
                       RALLYSITE=RALLYSITE)
+
+# ToDo: Insert songlist from database.
+template = jinja_env.get_template('songlist.html')
+SONGLIST = template.render()
 
 def allowed_file(filename):
     return '.' in filename and \
