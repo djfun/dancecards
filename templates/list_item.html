@@ -1,0 +1,24 @@
+<div id="user{{ s_id }}" class="namebox
+                                {%- if s_filled %} filled {% else %} empty {% endif %}
+                                {%- if s_sent %}sent{% else %}ready{% endif %}
+                                {%- if s_supertramp %} stramp{% endif %}"
+                         title="{{ div_title_text }}"
+                         aria-label="{{ div_title_text }}">
+  <span class="name">{{ s_prefname }}</span>
+  <span class="email hidden">{{ s_email }}</span>
+  <span class="phone hidden">{{ s_phone }}</span>
+  <span class="photo hidden">{{ RALLYSITE }}/static/pix/{{ s_photo }}.jpg</span>
+{%- if s_filled %}
+  <span class="address">{{ s_name }}, {{ s_location }}</span>
+{%- else %}
+  <span class="address">{{ s_name }}</span>
+{%- endif %}
+{%- if s_sent %}
+  <div class="image" title="You already sent a sticker to {{ s_name }}."></div>
+{%- endif %}
+{%- if s_filled %}
+  <br/><span class="email">{{ s_email }}</span>
+{%- else %}
+  <br/><span class="address hidden">{{ s_location }}</span>
+{%- endif %}
+</div>

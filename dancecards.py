@@ -92,61 +92,29 @@ def renderList(singers, voicepart, cursinger):
                    (cur_stramp != 0 and s_voicepart == cur_voicepart))):
                   rtosing = rtosing + 1
 
-      rlist = rlist + f'''<div id="user{s_id}" class="namebox '''
-
-      if s_filled:
-        rlist = rlist + "filled "
-      else:
-        rlist = rlist + "empty "
-      if s_sent:
-        rlist = rlist + "sent "
-      else:
-        rlist = rlist + "ready "
-      if s_supertramp:
-        rlist = rlist + "stramp "
-
-      rlist = rlist + f'''"''' # Close the class list
-
       # Add a title to this div to make it more accessible to the sight-impaired:
       if s_sent and s_filled:
           div_title_text = f'''You and {s_prefname} sent each other a sticker!'''
-          a_label_text = f'''You and {s_prefname} sent each other a sticker!'''
       elif s_sent and not s_filled:
           div_title_text = f'''You sent {s_prefname} a sticker; {s_prefname} hasn't responded'''
-          a_label_text = f'''You sent {s_prefname} a sticker; {s_prefname} hasn't responded'''
       elif not s_sent and s_filled:
           div_title_text = f'''{s_prefname} sent you a sticker; you haven't responded'''
-          a_label_text = f'''{s_prefname} sent you a sticker; you haven't responded'''
       else:
           div_title_text = f'''You and {s_prefname} haven't sung together yet'''
-          a_label_text = f'''You and {s_prefname} haven't sung together yet'''
 
-      div_title = 'title="' + div_title_text + '"'
-      div_aria_label = 'aria-label="' + a_label_text + '"'
-
-      rlist = rlist + div_title + div_aria_label + f'''>''' # Close the opening div
-
-      # These must be in this order since the JavaScript current assumes they are thus.
-      rlist = rlist + f'''<span class="name">{s_prefname}</span>''' #  ({s_partnum})
-      rlist = rlist + f'''<span class="email hidden">{s_email}</span>'''
-      rlist = rlist + f'''<span class="phone hidden">{s_phone}</span>'''
-      rlist = rlist + f'''<span class="photo hidden">{RALLYSITE}/static/pix/{s_photo}.jpg</span>'''
-
-      # These fields are for display vs. data passing.
-      if s_filled:
-        rlist = rlist + f'''<span class="address">{s_name}, {s_location}</span>'''
-      else:
-        rlist = rlist + f'''<span class="address">{s_name}</span>'''
-
-      if s_sent:
-        rlist = rlist + f'''<div class="image" title="You already sent a sticker to {s_name}."></div>'''
-
-      if s_filled:
-        rlist = rlist + f'''<br/><span class="email">{s_email}</span>'''
-      else:
-        rlist = rlist + f'''<br/><span class="address hidden">{s_location}</span>'''
-
-      rlist = rlist + "</div>\n    "
+      rlist = rlist + render_template('list_item.html',
+                                      s_id=s_id,
+                                      s_filled=s_filled,
+                                      s_sent=s_sent,
+                                      s_supertramp=s_supertramp,
+                                      div_title_text=div_title_text,
+                                      s_prefname=s_prefname,
+                                      s_email=s_email,
+                                      s_phone=s_phone,
+                                      RALLYSITE=RALLYSITE,
+                                      s_photo=s_photo,
+                                      s_name=s_name,
+                                      s_location=s_location)
 
   return rlist, rtosing
 
