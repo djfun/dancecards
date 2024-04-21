@@ -45,12 +45,26 @@ cur.execute('''CREATE TABLE "stickers" (
   "time"  INTEGER NOT NULL
 )''')
 
+partnum = 0
+
 for line in data:
+  if 'PARTNUM' in line:
+    partnum = line['PARTNUM']
+  else:
+    partnum += 1
+  if 'NICK' in line:
+    nick = line['NICK']
+  else:
+    nick = line['NAME']
+  if 'PHONE' in line:
+    phone = line['PHONE']
+  else:
+    phone = ""
   code = random_generator(size=8)
   photo = line['EMAIL'].replace('.', '_')
-  photo = photo.replace('@', '_')
+  photo = photo.replace('@', '_').lower()
   cur.execute("INSERT into singers(partnum, prefname, name, email, code, voicepart, phone, photo, location) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-              (line['PARTNUM'], line['NICK'], line['NAME'], line['EMAIL'], code, line['VOICEPART'].lower(), line['PHONE'], photo, line['LOCATION']))
+              (partnum, nick, line['NAME'], line['EMAIL'], code, line['VOICEPART'].lower(), phone, photo, line['LOCATION']))
 
 db.commit()
 db.close()
