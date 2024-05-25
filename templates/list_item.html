@@ -9,9 +9,9 @@
   <span class="phone hidden">{{ s_phone }}</span>
   <span class="photo hidden">{{ RALLYSITE }}/static/pix/{{ s_photo }}.jpg</span>
 {%- if s_filled %}
-  <span class="address">{{ s_name }}, {{ s_location }}</span>
+  <span class="address">{{ s_location }}</span>
 {%- else %}
-  <span class="address">{{ s_name }}</span>
+  <span class="address"></span>
 {%- endif %}
 {%- if s_sent %}
   <div class="image" title="You already sent a sticker to {{ s_name }}."></div>
