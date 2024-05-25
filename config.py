@@ -1,12 +1,12 @@
-DATABASE = './dancecards.db'
-IMPORT_CSV = 'dancecards.csv'
+DATABASE = './dancecards_ehb2024.db'
+IMPORT_CSV = 'participants_12_05_2024_dancecards.csv'
 UPLOAD_FOLDER = './static/pix' # Simplicity
 DEBUG = True
-RALLY = 'UKHB'
+RALLY = 'EHB'
 RALLYYEAR = '2024'
 RALLYWYEAR = f'''{RALLY} {RALLYYEAR}'''
 RALLYSITE = ''
-APP_ADMIN = 'Del'
+APP_ADMIN = 'Martin'
 TITLE = f'{RALLYWYEAR} Quartet Tramp Dance Card'
 RALLYSCHEDULE= '/static/schedule.html'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
