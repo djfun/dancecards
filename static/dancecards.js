@@ -34,50 +34,45 @@ socket.on("stickerReceived", data => {
 
 function handleClick(event) {
     targetID = event.currentTarget.id;
-    document.getElementById("popup-confirm").classList.remove("hidden");
-    document.getElementById("popup-message").innerText = "Do you want to send a sticker to " + event.currentTarget.firstChild.innerText + "?"
 
-    /* Order of these must match order as output, with no spurious whitespace
-     * "elements", at least until more logic is added to check for that. */
-    nxtSib = event.currentTarget.firstChild.nextSibling
+    hreftxt = event.currentTarget.querySelector(".email").innerText
+    imgsrc = event.currentTarget.querySelector(".photo").innerText
+    nametxt = event.currentTarget.querySelector(".name").innerText
+    phonetxt = event.currentTarget.querySelector(".phone").innerText
 
-    nxtSib = nxtSib.nextSibling
-    hreftxt = nxtSib.innerText
-    //document.getElementById("popup-message-phone").innerText = "Phone: " + nxtSib.innerText
+    // document.getElementById("popup-message-phone").innerText = "Phone: " + phonetxt
 
-    nxtSib = nxtSib.nextSibling
     img = document.getElementById("popup-image-a")
-    img.setAttribute('src', nxtSib.innerText)
-    nxtSib = event.currentTarget.firstChild.nextSibling
+    img.setAttribute('src', imgsrc)
 
-    hreftxt = nxtSib.innerText
     anchor = document.getElementById("popup-email-a")
     anchor.setAttribute('href', "mailto:"+ hreftxt)
     anchor.innerText = hreftxt
 
-    hreftxt = nxtSib.innerText
+    document.getElementById("popup-confirm").classList.remove("hidden");
+    document.getElementById("popup-message").innerText = "Do you want to send a sticker to " + nametxt + "?"
     document.getElementById("cover").classList.remove("hidden");
 }
 
 function handleInfoClick(event) {
     targetID = event.currentTarget.id;
-    document.getElementById("popup-confirm").classList.add("hidden");
-    document.getElementById("popup-message").innerText = "You already sent a sticker to " + event.currentTarget.firstChild.innerText + "!"
 
-    /* Order of these must match order as output, with no spurious whitespace
-     * "elements", at least until more logic is added to check for that. */
-    nxtSib = event.currentTarget.firstChild.nextSibling
-    hreftxt = nxtSib.innerText
+    hreftxt = event.currentTarget.querySelector(".email").innerText
+    imgsrc = event.currentTarget.querySelector(".photo").innerText
+    nametxt = event.currentTarget.querySelector(".name").innerText
+    phonetxt = event.currentTarget.querySelector(".phone").innerText
+
+    // document.getElementById("popup-message-phone").innerText = "Phone: " + phonetxt
+
+    document.getElementById("popup-confirm").classList.add("hidden");
+    document.getElementById("popup-message").innerText = "You already sent a sticker to " + nametxt + "!"
+
     anchor = document.getElementById("popup-email-a")
     anchor.setAttribute('href', "mailto:"+ hreftxt)
     anchor.innerText = hreftxt
 
-    nxtSib = nxtSib.nextSibling
-    //document.getElementById("popup-message-phone").innerText = "Phone: " + nxtSib.innerText
-
-    nxtSib = nxtSib.nextSibling
     img = document.getElementById("popup-image-a")
-    img.setAttribute('src', nxtSib.innerText)
+    img.setAttribute('src', imgsrc)
 
     document.getElementById("cover").classList.remove("hidden");
 }
