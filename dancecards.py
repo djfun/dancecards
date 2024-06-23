@@ -208,6 +208,7 @@ def selfService(code):
   return render_template('selfserve.html',
                          TITLE=TITLE,
                          RALLYSITE=RALLYSITE,
+                         s_photo=s_photo,
                          stchecked=stchecked,
                          code=code,
                          formMsg=formMsg)
