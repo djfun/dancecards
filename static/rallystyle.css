@@ -1,16 +1,47 @@
-/* UKHB rally-specific hooks. */
+/* AHB colors */
+:root {
+    /* Tenor color is Blue */
+    --hb-tenor: #428BCA;
+    --hb-tenor-hover-bg: #428BCA;
+    --hb-tenor-hover: white;
+    --hb-tenor-filled-bg: #cfdbe6;
+    --hb-tenor-black: white;
+
+    /* Lead color is Green */
+    --hb-lead: #5CB85C;
+    --hb-lead-hover-bg: #5CB85C;
+    --hb-lead-hover: black;
+    --hb-lead-filled-bg: #cfe6cf;
+    --hb-lead-filled: black;
+
+    /* Baritone color is Orange */
+    --hb-baritone: #e18f00;
+    --hb-baritone-hover-bg: #e18f00;
+    --hb-baritone-hover: black;
+    --hb-baritone-filled-bg: #ffdfb0;
+    --hb-baritone-filled: black;
+
+    /* Bass color is Red */
+    --hb-bass: #D9534F;
+    --hb-bass-hover-bg: #D9534F;
+    --hb-bass-hover: black;
+    --hb-bass-filled-bg: #f4dcdc;
+    --hb-bass-filled: black;
+}
+
+/* CSS variabls don't work in url() yet, so here's how to get the checkmarks in place. */
 .tenor div.image {
-    background-image: url('check_blue.png');
+  background-image: url('check_blue.png');
 }
 
 .lead div.image {
-  background-image: url('check_red.png');
-}
-
-.baritone div.image {
   background-image: url('check_green.png');
 }
 
+.baritone div.image {
+  background-image: url('check_orange.png');
+}
+
 .bass div.image {
-  background-image: url('check_brown.png');
+  background-image: url('check_red.png');
 }
