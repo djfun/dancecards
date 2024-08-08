@@ -363,6 +363,25 @@ def test_connect():
 def handle_join(code):
   join_room(code)
 
+@socketio.on('refresh')
+def handle_refresh(userstring, code):
+  receiver_id = userstring[4:]
+
+  cur = get_db().cursor()
+  cur.execute("SELECT singers.id,singers.name from singers where singers.code=?", (code,))
+  currentUser = cur.fetchone()
+
+  if not currentUser:
+    return "invalid code"
+
+  cur.execute("SELECT singers.id,singers.name,singers.code from singers where singers.id=?", (receiver_id,))
+  receiverUser = cur.fetchone()
+
+  if not receiverUser:
+    return "invalid userstring"
+
+  update_node(currentUser[0], receiverUser[0], code)
+
 @socketio.on('click')
 def handle_click(userstring, code):
   receiver_id = userstring[4:]

@@ -12,6 +12,11 @@ socket.on("updateNode", data => {
   addEvents();
 });
 
+socket.io.on("reconnect", (attempt) => {
+  socket.emit("join", code);
+  refreshElements();
+});
+
 socket.on("stickerReceived", data => {
   var element = document.getElementById("infos");
   var newDiv = document.createElement("div");
@@ -31,6 +36,14 @@ socket.on("stickerReceived", data => {
   }, 5000);
 
 });
+
+function refreshElements() {
+  var elements = document.getElementsByClassName("namebox empty");
+
+  for (let item of elements) {
+    socket.emit("refresh", item.id, code);
+  }
+}
 
 function handleClick(event) {
     targetID = event.currentTarget.id;
