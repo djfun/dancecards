@@ -353,7 +353,7 @@ def update_node(user_id, node_user_id, code):
       renderedList = renderList(singers, singers[0][5], None)
       emit("updateNode", {"nodeid": "user" + str(node_user_id), "html": renderedList[0]}, room=code)
   else:
-      printf(f'''update_node(): oops, singers didn't match for id {node_user_id}''')
+      print(f'''update_node(): oops, singers didn't match for id {node_user_id}''')
 
 @socketio.on('connect')
 def test_connect():

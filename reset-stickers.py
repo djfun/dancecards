@@ -12,7 +12,7 @@ if os.path.isfile(DATABASE):
   print("Database file already exists.")
   if not input("Do you want to continue? (y/n): ").lower().strip()[:1] == "y": sys.exit(1)
 else:
-  printf("Database file doesn't exist; stopping without further action")
+  print("Database file doesn't exist; stopping without further action")
   sys.exit(1)
 
 db = sqlite3.connect(DATABASE)
