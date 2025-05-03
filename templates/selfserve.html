@@ -6,17 +6,21 @@
   <link rel="stylesheet" type="text/css" href="{{ RALLYSITE }}/static/style.css" />
 </head>
 <body>
-<img id="popup-image-a" height="256" src="{{ RALLYSITE }}/static/pix/{{s_photo}}.jpg" onerror="this.src='{{ RALLYSITE }}/static/pix/no_picture.jpg';" />
-<br/>
-<form method="post" enctype="multipart/form-data">
-  <table>
-  <tr><td><label for="self-picture">Tap/Click this to take/upload your picture:</label><br/><i>What it actually does is device and browser dependent...</i></td><td><input id="self-picture" type="file" value="New Picture" name="file" accept="image/*" /></td></tr>
+<div class="cover"><div class="popup">
+<form method="post" enctype="multipart/form-data" name="self-form">
+  <div class="self-picture-wrapper">
+    <img id="popup-image-a" height="128" src="{{ RALLYSITE }}/static/pix/{{s_photo}}.jpg" onerror="this.src='{{ RALLYSITE }}/static/pix/no_picture.jpg';" />
+    <label for="self-picture" class="fileupload">+</label>
+    <input id="self-picture" class="visuallyhidden" type="file" value="New Picture" name="file" accept="image/*" onchange="document.self-form.submit();" />
+  </div>
+  <input id="self-st" type="checkbox" name="supertramp" {{ stchecked }} onchange="document.self-form.submit();">
+  <label for="self-st"><b>Quartet Super Tramp</b><br />Please check this if you are going for Quartet Super Tramp</label>
 
-  <tr><td><label for="self-st">Tick the box if you are going for Quartet Super Tramp:</label></td><td><input id="self-st" type="checkbox" name="supertramp" {{ stchecked }} ></td></tr>
-  <tr><td><label for="self-submit">Tap/Click to make changes:</label></td><td><input id="self-submit" type="submit" value="Upload/Save" /></td></tr>
-  </table>
+  <button id="self-submit" class="visuallyhidden" type="submit" value="Save">Save</button>
+  <button class="deny" value="done" type="button" onclick="window.location.href='{{ RALLYSITE }}/card/{{ code }}';">Back</button>
 </form>
-<br/>When you are done: <button value="done" onclick="window.location.href='{{ RALLYSITE }}/card/{{ code }}';">Back to your dancecard...</button>
-<br/><span class="alert">{{ formMsg }}</span>
+<br />
+<span class="alert">{{ formMsg }}</span>
+</div></div>
 </body>
 </html>

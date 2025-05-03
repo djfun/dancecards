@@ -268,11 +268,10 @@ div.popup {
   border-radius: 5px;
 }
 div.popup button {
-  width: 200px;
+  min-width: 200px;
   height: 60px;
   font-size: 1.3em;
-  margin: 0 20px;
-  margin-top: 40px;
+  margin: 1.2em 1em 0 1em;
   box-shadow: none;
   border: 0;
   border-radius: 5px;
@@ -289,6 +288,16 @@ button.confirm.hidden {
 
 button.deny {
   background-color: #d2d2d2;
+}
+
+div.popup label:not(.fileupload) {
+  display: block;
+  margin: 0.9em auto;
+  text-align: left;
+}
+
+div.popup input {
+  display: block;
 }
 
 div.popup img {
@@ -309,6 +318,78 @@ div.popup img {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.self-picture-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 132px;
+  height: 132px;
+}
+
+label.fileupload {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  width: 1.18em;
+  background-color: #d2d2d2;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px #999,
+    0 1px 4px 2px rgba(0,0,0,.2);
+}
+
+[type="checkbox"] {
+  position: relative;
+  left: 30px;
+  top: 0px;
+  z-index: 0;
+  -webkit-appearance: none;
+}
+[type="checkbox"] + label {
+  cursor: pointer;
+  font-size: 1.1em;
+  padding-right: 90px;
+  position: relative;
+}
+[type="checkbox"] + label::before {
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  border: 2px solid #ddd;
+  background-color: #EEE;
+  content: "";
+  margin-right: 15px;
+  transition: background-color 0.5s linear;
+  z-index: 5;
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
+[type="checkbox"] + label::after {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #fff;
+  content: "";
+  transition: margin 0.1s linear;
+  box-shadow: 0px 0px 5px #aaa;
+  position: absolute;
+  right: 47px;
+  top: 7px;
+  z-index: 10;
+}
+[type="checkbox"]:checked + label::before {
+  background-color: #1b3bc7;
+}
+[type="checkbox"]:checked + label::after {
+  margin: 0 -30px 0 0;
 }
 
 div.filled.ready {
