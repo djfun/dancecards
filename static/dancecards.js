@@ -3,6 +3,7 @@ var pathname = window.location.pathname;
 var code = pathname.substring(6)
 var targetID;
 addEvents();
+autoWidth();
 
 socket.emit("join", code);
 
@@ -36,6 +37,20 @@ socket.on("stickerReceived", data => {
   }, 5000);
 
 });
+
+function autoWidth() {
+  const nameboxes = document.getElementsByClassName("namebox");
+  let maxSpanWidth = 0;
+  for (let namebox of nameboxes) {
+    const elements = namebox.childNodes;
+    for (let el of elements) {
+      if (el.tagName == 'SPAN') {
+        maxSpanWidth = Math.max(maxSpanWidth, el.scrollWidth);
+      }
+    }
+  }
+  document.documentElement.style.setProperty('--spanWidth', maxSpanWidth + "px");
+}
 
 function refreshElements() {
   var elements = document.getElementsByClassName("namebox empty");

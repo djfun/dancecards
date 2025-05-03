@@ -4,12 +4,6 @@
 @import url("rallystyle.css"); /* If present: for matching rally-specific colors, and or the supertramp
                                   aspirant image. */
 
-@media (max-width: 700px) {
-  body {
-    width: 520px;
-  }
-}
-
 @media print {
   body {
     width: 10in;
@@ -36,15 +30,18 @@
   }
   details, div { break-inside: avoid; }
   div.namebox {
-    display: inline-block;
     height: 4em;
-    width: 180px !important;
     border: 1px black solid;
     text-align: center;
     vertical-align: middle;
     margin: 2px 2px;
     position: relative;
   }
+}
+
+:root {
+    --spanWidth: 300px;
+    --nameboxPadding: 0.3em;
 }
 
 button.randbutton {
@@ -85,12 +82,12 @@ body {
   font-family: "Computer Modern", sans-serif;
 }
 h1 {
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: bold;
   text-align: center;
 }
 h2 {
-  font-size: 1.4em;
+  font-size: 1.1em;
   text-align: center;
   font-weight: normal;
 }
@@ -101,19 +98,16 @@ h2::before {
   content: "Your Name: ";
 }
 h3, summary {
-  font-size: 1.2em;
+  font-size: 1em;
 /*   margin-top: 2em; */
   margin-bottom: 0;
 }
 
 div.namebox {
-  display: inline-block;
-  height: 5em;
-  width: 240px;
+  min-height: 4em;
   border: 1px black solid;
   text-align: center;
-  vertical-align: middle;
-  margin: 5px 2px;
+  padding: var(--nameboxPadding);
   position: relative;
 }
 div.namebox div.image {
@@ -124,11 +118,6 @@ div.namebox div.image {
   position: absolute;
   background-size: contain;
 }
-div.empty::before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-}
 div.ready {
   cursor: pointer;
 }
@@ -137,18 +126,17 @@ img.popup-image-a {
   max-height: 256px;
 }
 span.name {
-  vertical-align: middle;
-  display: inline-block;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  line-height: 1.4em;
+  white-space: nowrap;
 }
 div.filled {
   background-color: #f0f0f0;
 }
 div.filled span.address {
-  line-height: 1.3em;
+  line-height: 1.2em;
 }
 div.filled span.name {
-  line-height: 1.6em;
   font-weight: bold;
 }
 span.address::before {
@@ -157,7 +145,7 @@ span.address::before {
 }
 span.address {
   color: black;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 span.alert {
   color: red;
@@ -168,7 +156,14 @@ tr.rowhighlight td, tr.rowhighlight th{
     background-color:#f0f8ff;
 }
 details.tenor summary, details.lead summary, details.baritone summary, details.bass summary {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    line-height: 1.6;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 0.3em;
+    grid-template-columns: repeat(auto-fill, minmax(calc(var(--spanWidth) + 2px + var(--nameboxPadding)), 1fr));
 }
 
 /* These are intended to match badge lanyard colours. DO NOT CHANGE HERE.
