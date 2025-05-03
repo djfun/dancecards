@@ -255,14 +255,9 @@ div.cover {
   text-align: center;
   height: 100%;
 }
-div.cover.hidden {
+div.hidden, span.hidden {
   display: none;
 }
-
-span.hidden {
-  display: none;
-}
-
 div.popup {
   background-color: white;
   padding: 40px;

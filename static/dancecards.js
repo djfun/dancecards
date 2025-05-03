@@ -69,7 +69,7 @@ function handleClick(event) {
     nametxt = event.currentTarget.querySelector(".name").innerText
     phonetxt = event.currentTarget.querySelector(".phone").innerText
 
-    // document.getElementById("popup-message-phone").innerText = "Phone: " + phonetxt
+    document.getElementById("popup-message-phone").innerText = "Phone: " + phonetxt
 
     img = document.getElementById("popup-image-a")
     img.setAttribute('src', imgsrc)
@@ -91,7 +91,7 @@ function handleInfoClick(event) {
     nametxt = event.currentTarget.querySelector(".name").innerText
     phonetxt = event.currentTarget.querySelector(".phone").innerText
 
-    // document.getElementById("popup-message-phone").innerText = "Phone: " + phonetxt
+    document.getElementById("popup-message-phone").innerText = "Phone: " + phonetxt
 
     document.getElementById("popup-confirm").classList.add("hidden");
     document.getElementById("popup-message").innerText = "You already sent a sticker to " + nametxt + "!"
