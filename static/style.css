@@ -215,10 +215,16 @@ details.tenor summary, details.lead summary, details.baritone summary, details.b
 /*  End of HB colours. */
 
 /* Special styling for super-tramping. */
-.stramp {
+.stramp:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  opacity: 40%;
   background-image: url('tramp.png');
   background-position: bottom left;
-  /* background-size: contain; */
   background-size: 3em;
   background-repeat: no-repeat;
 }
