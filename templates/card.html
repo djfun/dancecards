@@ -4,14 +4,6 @@
   <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="{{ RALLYSITE }}/static/style.css" />
-  <script type="text/javascript" defer>
-  function addSonglistEvents() {
-    document.getElementById("songlist").querySelectorAll('th').forEach((th, position) => {
-     th.addEventListener('click', evt => sortTable(position));
-    });
-  }
-  window.onload = addSonglistEvents;
-  </script>
 </head>
 <body>
   <h1><a onClick="window.location.reload()">{{ TITLE }}</a></h1>

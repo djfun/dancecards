@@ -3,6 +3,7 @@ var pathname = window.location.pathname;
 var code = pathname.substring(6)
 var targetID;
 addEvents();
+addSonglistEvents();
 autoWidth();
 
 socket.emit("join", code);
@@ -136,6 +137,12 @@ function addEvents() {
 
 document.getElementById("popup-confirm").addEventListener('click', confirmClick);
 document.getElementById("popup-deny").addEventListener('click', denyClick);
+
+function addSonglistEvents() {
+  document.getElementById("songlist").querySelectorAll('th').forEach((th, position) => {
+   th.addEventListener('click', evt => sortTable(position));
+  });
+}
 
 // Songlist tools; see https://stackoverflow.com/questions/57907979/javascript-shuffle-table-rows
 function sortSongList() {
