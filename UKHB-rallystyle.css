@@ -14,3 +14,7 @@
 .bass div.image {
   background-image: url('check_brown.png');
 }
+
+#popup-message-email {
+  display: unset;
+}

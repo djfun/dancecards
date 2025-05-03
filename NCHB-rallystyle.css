@@ -46,6 +46,10 @@
   background-image: url('check_blue.png');
 }
 
+#popup-message-email {
+  display: unset;
+}
+
 /* random stuff
 tr.rowhighlight td, tr.rowhighlight th{
   background-color:#f0f8ff;
