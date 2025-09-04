@@ -201,7 +201,7 @@ function sortTable(colnum) {
 
   // set up the queryselector for getting the indicated
   // column from a row, so we can compare using its value:
-  let qs = `td:nth-child(${colnum})`;
+  let qs = `td:nth-child(${colnum + 1})`;
 
   // and then just... sort the rows:
   rows.sort( (r1,r2) => {

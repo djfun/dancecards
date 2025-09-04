@@ -52,12 +52,31 @@ button.listbutton {
     font-size: 1em;
 }
 
-table.songlist th,tr td {
-    font-size: 1.5em;
+.songlist {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-td.keysig {
+.songlist tr:nth-child(odd) {
+    background-color: #f4f4f4;
+}
+
+.songlist .keysig {
     font-weight: bold;
+    white-space: nowrap;
+}
+
+.songlist td {
+    padding: 0 5px 0 5px;
+}
+
+.songlist td:nth-child(3) {
+    font-weight: bold;
+}
+
+.songlist em {
+    display: block;
+    font-weight: normal;
 }
 
 table.schedule {
@@ -155,7 +174,7 @@ span.alert {
 tr.rowhighlight td, tr.rowhighlight th{
     background-color:#f0f8ff;
 }
-details.tenor summary, details.lead summary, details.baritone summary, details.bass summary {
+summary {
     font-size: 1.8em;
     line-height: 1.6;
 }
