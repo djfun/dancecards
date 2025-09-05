@@ -24,7 +24,7 @@ cur = db.cursor()
 
 cur.execute('''CREATE TABLE "singers" (
   "id"  INTEGER PRIMARY KEY AUTOINCREMENT,
-  "partnum" INTEGER NOT NULL UNIQUE,
+  "partnum" INTEGER NOT NULL,
   "prefname"  TEXT NOT NULL,
   "name"  TEXT NOT NULL,
   "location"  TEXT NOT NULL DEFAULT '',

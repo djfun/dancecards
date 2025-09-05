@@ -1,0 +1,37 @@
+<!DOCTYPE html><html>
+<head>
+  <title>{{ TITLE }}</title>
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{{ RALLYSITE }}/static/style.css" />
+</head>
+<body>
+  <h1><a onClick="window.location.reload()">{{ TITLE }}</a></h1>
+  <h1>Registration</h1>
+  <div class="popup register">
+{% if not code %}
+  <form method="post" enctype="multipart/form-data" name="registration-form">
+  <label for="reg-name">Name *</label>
+  <input id="reg-name" name="name" type="text" value="{{ name }}" required>
+  <label for="reg-voicepart">Voicepart *</label>
+  <select id="reg-voicepart" name="voicepart" required>
+    <option value="">please select</option>
+    <option value="tenor" {%- if voicepart == "tenor" %}selected{% endif %}>Tenor</option>
+    <option value="lead" {%- if voicepart == "lead" %}selected{% endif %}>Lead</option>
+    <option value="baritone" {%- if voicepart == "baritone" %}selected{% endif %}>Baritone</option>
+    <option value="bass" {%- if voicepart == "bass" %}selected{% endif %}>Bass</option>
+  </select>
+  <label for="reg-email">E-Mail address</label>
+  <input id="reg-email" name="email" type="text" value="{{ email }}">
+  <label for="reg-location">Town/City *</label>
+  <input id="reg-location" name="location" type="text" value="{{ location }}" required>
+  <button id="reg-submit" type="submit" value="Register">Register</button>
+  <div class="note">* Required field</div>
+  <span class="alert">{{ formMsg }}</span>
+  </form>
+{% else %}
+<p>Thanks for registering, {{ name }}!<br />You can find your personal dancecard at <a href="{{ RALLYSITE }}/card/{{ code }}">{{ RALLYSITE }}/card/{{ code }}</a>. Consider adding this as a bookmark, so you don't lose it.</p>
+{% endif %}
+</div>
+</body>
+</html>

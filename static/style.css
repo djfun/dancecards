@@ -255,6 +255,24 @@ div#infos {
   display: none;
   height: 1em; /* 3em */
 }
+div.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register label {
+  margin: 1.2em 1em 0 1em !important;
+}
+.register input, .register select {
+  min-width: 300px;
+  height: 3em;
+  margin: 1.2em 1em 0 1em;
+  padding: 4px;
+  box-sizing: border-box;
+}
+.register .note {
+  margin: 1.2em 1em 0 1em;
+}
 div.infobox {
   text-align: center;
   transition: opacity 3s;

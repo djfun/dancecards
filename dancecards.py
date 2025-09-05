@@ -6,6 +6,7 @@ from flask_socketio import SocketIO, emit, join_room
 from werkzeug.utils import secure_filename
 from PIL import Image, ImageOps
 import time
+import random, string
 from jinja2 import Environment, FileSystemLoader
 from config import *
 
@@ -39,6 +40,8 @@ def get_db():
     db = g._database = sqlite3.connect(DATABASE)
   return db
 
+def random_generator(size=6, chars=string.ascii_lowercase + string.digits):
+  return ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(size))
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -122,6 +125,52 @@ def renderList(singers, voicepart, cursinger):
 @app.route('/')
 def root():
   return f'''<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>{RALLYWYEAR}</title></head><body>Harmony is for everyone!</body></html>'''
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+  formMsg = ""
+  name = ""
+  email = ""
+  location = ""
+  voicepart = ""
+  code = ""
+  parts = ['tenor', 'lead', 'baritone', 'bass']
+  cur = get_db().cursor()
+
+  if request.method == 'POST':
+    name = request.form.get('name')
+    email = request.form.get('email')
+    location = request.form.get('location')
+    voicepart = request.form.get('voicepart')
+
+    if name and location and (voicepart in parts):
+      code = random_generator(size=8)
+      photo = name.replace(' ', '_').lower() + code
+      cur.execute("""INSERT into singers(partnum,
+                                         prefname,
+                                         name,
+                                         email,
+                                         code,
+                                         voicepart,
+                                         phone,
+                                         photo,
+                                         location)
+                          values (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                  (0, name, name, email, code, voicepart,
+                   "", photo, location))
+      get_db().commit()
+    else:
+      formMsg = "Please fill all required fields."
+      
+  return render_template('register.html',
+                         TITLE=TITLE,
+                         RALLYSITE=RALLYSITE,
+                         name=name,
+                         email=email,
+                         location=location,
+                         voicepart=voicepart,
+                         code=code,
+                         formMsg=formMsg)
 
 @app.route('/selfserve/<code>', methods=['GET', 'POST'])
 def selfService(code):
