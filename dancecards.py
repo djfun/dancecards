@@ -21,6 +21,7 @@ jinja_env = Environment(loader=jinja_file_loader)
 template = jinja_env.get_template('faq.html')
 FAQ = template.render(RALLYSCHEDULE=RALLYSCHEDULE,
                       RALLYWYEAR=RALLYWYEAR,
+                      TITLE=TITLE,
                       APP_ADMIN=APP_ADMIN,
                       RALLYSITE=RALLYSITE)
 
